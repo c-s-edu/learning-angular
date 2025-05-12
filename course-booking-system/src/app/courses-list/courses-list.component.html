@@ -1,17 +1,31 @@
 <h2>{{ title }}</h2>
 
+@for (course of courses; track course.id) {
 <div class="course-item">
-    <h3>Intro to Angular</h3>
-    <p>Description goes here</p>
-    <p>Costs 100 money</p>
-    <p>Date: 101010101</p>
-    <button>More</button>
-</div>
+  <div>
+    <h3>{{ course.title }}</h3>
+    <p>{{ course.description }}</p>
+    <p>{{ course.price | currency : "USD" }}</p>
+    <p>{{ course.date | date : "longDate" }}</p>
+  </div>
 
-<div class="course-item">
-    <h3>Mega Angular</h3>
-    <p>Description goes here</p>
-    <p>Costs 500 money</p>
-    <p>Date: 201010101</p>
-    <button>More</button>
+  <div>
+    <p [hidden]="!course.soldout">Sold Out</p>
+    @if (course.price < 75) {
+    <div class="special-offer">Special Offer!</div>
+    } @if (course.onsale) {
+    <div class="on-sale">On Sale!</div>
+    }
+
+    <img
+      [ngStyle]="{ border: course.soldout ? '2px solid red' : 'none' }"
+      [src]="course.img"
+      [alt]="course.title"
+      width="100"
+    />
+    <div>
+      <button (click)="viewDetails(course.title)">View details</button>
+    </div>
+  </div>
 </div>
+}
