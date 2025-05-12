@@ -1,0 +1,61 @@
+* {
+  font-family: "Open Sans", sans-serif;
+}
+
+.course-card {
+  background-color: aliceblue;
+  border: 1px solid #ddd;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  border-radius: 4px;
+  display: flex;
+  flex-direction: column;
+  max-width: 800px;
+}
+
+.card-block {
+  display: flex;
+  flex-direction: row;
+}
+
+.card-block div {
+  min-width: 50%;
+}
+
+.buttons {
+  flex-direction: row;
+  min-width: 50%;
+}
+
+h3 {
+  margin-bottom: 1rem;
+}
+
+button {
+  background-color: #1578c9;
+  color: white;
+  border: none;
+  padding: 1rem;
+  cursor: pointer;
+  margin-right: 1rem;
+}
+
+button:hover {
+  background-color: #9cb5c9;
+}
+
+button:disabled {
+  background-color: grey;
+}
+
+.special-offer {
+  color: green;
+  font-weight: bold;
+}
+
+.on-sale {
+  background-color: green;
+  color: white;
+  font-weight: bold;
+  padding: 0.5rem;
+}

@@ -1,9 +1,10 @@
-import { CurrencyPipe, DatePipe, NgStyle } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
+import { CourseCardComponent } from '../course-card/course-card.component';
+import { not } from 'rxjs/internal/util/not';
 
 @Component({
   selector: 'app-courses-list',
-  imports: [NgStyle, DatePipe, CurrencyPipe],
+  imports: [CourseCardComponent],
   templateUrl: './courses-list.component.html',
   styleUrl: './courses-list.component.css',
 })
@@ -42,10 +43,24 @@ export class CoursesListComponent implements OnInit {
     },
   ];
 
+  wishlist: any[] = []; //init wishlist array
+
   ngOnInit(): void {
     console.log('CoursesList initialised');
   }
-  viewDetails(title: string): void {
-    alert(`Viewing details for ${title}.`);
+
+  onCourseBooked(course: any): void {
+    //console.log('Parent heard about booking: ', course.title);
+    alert(`Course booked: ${course.title}.`);
+    //more?
+  }
+
+  onWishlistAdded(course: any): void {
+    //console.log('Parent heard about wishlist - ', course.title);
+    alert(`Course wishlisted: ${course.title}.`);
+    if (!this.wishlist.includes(course)) {
+      this.wishlist.push(course);
+    }
+    //pass into wishlist to update, or create wishlisted property?
   }
 }
